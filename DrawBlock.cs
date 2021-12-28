@@ -3,6 +3,7 @@ using System.Drawing.Drawing2D;
 
 namespace NassiBlocks
 {
+
     /// <summary>
     /// Drawing options
     /// (Параметры отрисовки)
@@ -20,6 +21,8 @@ namespace NassiBlocks
         /// </summary>
         public StringFormat drawFormat;
     }
+
+
     /// <summary>
     /// Block drawing
     /// (Рисование блока)
@@ -44,6 +47,53 @@ namespace NassiBlocks
         /// (Параметры)
         /// </summary>
         private Parametrs parametrs = new Parametrs();
+
+
+        /// <summary>
+        /// Constructor
+        /// Конструктор
+        /// </summary>
+        public DrawBlock()
+        {
+            parametrs.font = new Font(FontFamily.GenericSerif, 8, FontStyle.Regular);
+            parametrs.drawFormat = new StringFormat() { Alignment = StringAlignment.Center };
+        }
+
+
+        /// <summary>
+        /// Constructor with font
+        /// Конструктор с указанием шрифта
+        /// </summary>
+        /// <param name="font">Шрифт (Font)</param>
+        public DrawBlock(Font font)
+        {
+            parametrs.font = font;
+            parametrs.drawFormat = new StringFormat() { Alignment = StringAlignment.Center };
+        }
+
+        /// <summary>
+        /// Constructor with Drawing Format
+        /// Конструктор с указанием формата
+        /// </summary>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        public DrawBlock(StringFormat drawFormat)
+        {
+            parametrs.font = new Font(FontFamily.GenericSerif, 8, FontStyle.Regular);
+            parametrs.drawFormat = drawFormat;
+        }
+
+
+        /// <summary>
+        /// Constructor with font, Drawing Format
+        /// Конструктор с указанием шрифта, формата
+        /// </summary>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        public DrawBlock(Font font, StringFormat drawFormat)
+        {
+            parametrs.font = font;
+            parametrs.drawFormat = drawFormat;
+        }
         #endregion
         #region Params
         /// <summary>
@@ -202,6 +252,45 @@ namespace NassiBlocks
         {
             DrawRectangle(color, contrColor, width, height);
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Операционный блок с указанием высоты и ширины, текста, цвета блока, цвета текста, цвета контура, шрифта
+        /// (Operation Block with indication of height and width, text, block color, text color, outline color, font)
+        /// </summary>
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <returns>Блок операции (Operation Block)</returns>
+        public Bitmap OperationBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, Font font)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            return Block;
+        }
+        /// <summary>
+        /// Операционный блок с указанием высоты и ширины, текста, цвета блока, цвета текста, цвета контура, шрифта, формата отрисовки
+        /// (Operation Block with indication of height and width, text, block color, text color, outline color, font, drawing format)
+        /// </summary>
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        /// <returns>Блок операции (Operation Block)</returns>
+        public Bitmap OperationBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, Font font, StringFormat drawFormat)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, drawFormat);
             return Block;
         }
         #endregion
@@ -377,6 +466,97 @@ namespace NassiBlocks
             }
             return Block;
         }
+
+
+        /// <summary>
+        /// Branching Block with indication of height and width, text, block color, text color, outline color, added width, Additional bool
+        /// (Блок ветвления, текста, цвета блока, цвета текста, цвет контура, добавленная высота, добавление надписей)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="addHeight">Добавленная высота (Added Width)</param>
+        /// <param name="isAdditional">Добавление надписей да и нет (Add yes and no labels)</param>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        /// <returns>Branching Block (Блок ветвления)</returns>
+        public Bitmap BranchingBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, int addHeight, bool isAdditional, StringFormat drawFormat)
+        {
+            DrawRectangle(color, contrColor, width, height + addHeight);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, 0), new Point(width / 2, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 2, (height - addHeight) / 2), new Point(width, 0));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 2, height), new Point(width / 2, (height - addHeight) / 2));
+            graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, 0, drawFormat);
+            if (isAdditional)
+            {
+                graf.DrawString("Да", parametrs.font, new SolidBrush(fontColor), 0 + 2 * parametrs.font.Size, ((height - addHeight) / 6), drawFormat);
+                graf.DrawString("Нет", parametrs.font, new SolidBrush(fontColor), width - 2 * parametrs.font.Size, ((height - addHeight) / 6), drawFormat);
+            }
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Branching Block with indication of height and width, text, block color, text color, outline color, added width, Additional bool, font
+        /// (Блок ветвления, текста, цвета блока, цвета текста, цвет контура, добавленная высота, добавление надписей, шрифта)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="addHeight">Добавленная высота (Added Width)</param>
+        /// <param name="isAdditional">Добавление надписей да и нет (Add yes and no labels)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <returns>Branching Block (Блок ветвления)</returns>
+        public Bitmap BranchingBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, int addHeight, bool isAdditional, Font font)
+        {
+            DrawRectangle(color, contrColor, width, height + addHeight);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, 0), new Point(width / 2, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 2, (height - addHeight) / 2), new Point(width, 0));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 2, height), new Point(width / 2, (height - addHeight) / 2));
+            graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, 0, parametrs.drawFormat);
+            if (isAdditional)
+            {
+                graf.DrawString("Да", font, new SolidBrush(fontColor), 0 + 2 * font.Size, ((height - addHeight) / 6), parametrs.drawFormat);
+                graf.DrawString("Нет", font, new SolidBrush(fontColor), width - 2 * font.Size, ((height - addHeight) / 6), parametrs.drawFormat);
+            }
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Branching Block with indication of height and width, text, block color, text color, outline color, added width, Additional bool, font, drawing format
+        /// (Блок ветвления, текста, цвета блока, цвета текста, цвет контура, добавленная высота, добавление надписей, шрифта, формата отрисовки)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="addHeight">Добавленная высота (Added Width)</param>
+        /// <param name="isAdditional">Добавление надписей да и нет (Add yes and no labels)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        /// <returns>Branching Block (Блок ветвления)</returns>
+        public Bitmap BranchingBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, int addHeight, bool isAdditional, Font font, StringFormat drawFormat)
+        {
+            DrawRectangle(color, contrColor, width, height + addHeight);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, 0), new Point(width / 2, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 2, (height - addHeight) / 2), new Point(width, 0));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 2, height), new Point(width / 2, (height - addHeight) / 2));
+            graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, 0, drawFormat);
+            if (isAdditional)
+            {
+                graf.DrawString("Да", font, new SolidBrush(fontColor), 0 + 2 * font.Size, ((height - addHeight) / 6), drawFormat);
+                graf.DrawString("Нет", font, new SolidBrush(fontColor), width - 2 * font.Size, ((height - addHeight) / 6), drawFormat);
+            }
+            return Block;
+        }
         #endregion
         #region CaseBlock
         /// <summary>
@@ -514,6 +694,79 @@ namespace NassiBlocks
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width - width / 3, 0, parametrs.drawFormat);
             return Block;
         }
+
+
+        /// <summary>
+        /// Case Block with indication of height and width, text, block color, text color, outline color, added width, font
+        /// (Кейс-блок, с указанием высоты и ширины, текста, цвета блока, цвета текста, цвет контура, добавленная высота, шрифта)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="addHeight">Добавленная высота (Added Width)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <returns>Case Block (Кейс-блок)</returns>
+        public Bitmap CaseBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, int addHeight, Font font)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, 0), new Point(width - width / 4, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width, 0));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width - width / 4, height));
+            graf.DrawString(text, font, new SolidBrush(fontColor), width - width / 3, 0, parametrs.drawFormat);
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Case Block with indication of height and width, text, block color, text color, outline color, added width, drawing format
+        /// (Кейс-блок, с указанием высоты и ширины, текста, цвета блока, цвета текста, цвет контура, добавленная высота, формата отрисовки)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="addHeight">Добавленная высота (Added Width)</param>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        /// <returns>Case Block (Кейс-блок)</returns>
+        public Bitmap CaseBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, int addHeight, StringFormat drawFormat)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, 0), new Point(width - width / 4, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width, 0));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width - width / 4, height));
+            graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width - width / 3, 0, drawFormat);
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Case Block with indication of height and width, text, block color, text color, outline color, added width, font, drawing format
+        /// (Кейс-блок, с указанием высоты и ширины, текста, цвета блока, цвета текста, цвет контура, добавленная высота, шрифта, формата отрисовки)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="addHeight">Добавленная высота (Added Width)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        /// <returns>Case Block (Кейс-блок)</returns>
+        public Bitmap CaseBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, int addHeight, Font font, StringFormat drawFormat)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, 0), new Point(width - width / 4, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width, 0));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width - width / 4, height));
+            graf.DrawString(text, font, new SolidBrush(fontColor), width - width / 3, 0, drawFormat);
+            return Block;
+        }
         #endregion
         #region PreconditionBlock
         /// <summary>
@@ -637,6 +890,28 @@ namespace NassiBlocks
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / (width / 2), height / (int)(height / 1.75));
             return Block;
         }
+
+
+        /// <summary>
+        /// Precondition block with indication of height and width, text, block color, text color, outline color, added width, font
+        /// (Блок цикла с предусловием, с указанием высоты и ширины, текста, цвета блока, цвета текста, цвет контура, добавленная высота, шрифта)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="addHeight">Добавленная высота (Added Width)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <returns>Precondition Block (Блок цикла с предусловием)</returns>
+        public Bitmap PreconditionBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, int addHeight, Font font)
+        {
+            DrawRectangle(color, contrColor, width, height + addHeight);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, height), new Point(width / 4, (height - addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
+            graf.DrawString(text, font, new SolidBrush(fontColor), width / (width / 2), height / (int)(height / 1.75));
+            return Block;
+        }
         #endregion
         #region PostconditionBlock
         /// <summary>
@@ -758,6 +1033,28 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, 0), new Point(width / 4, (height + addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, (height + addHeight) / 2), new Point(width, (height + addHeight) / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / (width / 2), height - parametrs.font.Size * 2);
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Postcondition block with indication of height and width, text, block color, text color, outline color, added width, font
+        /// (Блок цикла с постусловием, с указанием высоты и ширины, текста, цвета блока, цвета текста, цвет контура, добавленная высота, шрифта)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="addHeight">Добавленная высота (Added Width)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <returns>Precondition Block (Блок цикла с постусловием)</returns>
+        public Bitmap PostconditionBlock(Color color, Color fontColor, Color contrColor, int width, int height, string text, int addHeight, Font font)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, 0), new Point(width / 4, (height + addHeight) / 2));
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, (height + addHeight) / 2), new Point(width, (height + addHeight) / 2));
+            graf.DrawString(text, font, new SolidBrush(fontColor), width / (width / 2), height - font.Size * 2);
             return Block;
         }
         #endregion
@@ -897,6 +1194,79 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(frameColor), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Subroutine block with indication of height and width, text, block color, text color, outline color, frame color, font
+        /// (Блок подпрограммы, с указанием высоты и ширины, текста, цвета блока, цвета текста, цвета контура, цвета рамок, шрифта)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="frameColor">Цвет рамки (Frame Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <returns>Subroutine Block (Блок подпрограммы)</returns>
+        public Bitmap SubroutineBlock(Color color, Color fontColor, Color contrColor, Color frameColor, int width, int height, string text, Font font)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.FillRectangle(new SolidBrush(frameColor), 1, 1, width / 4, height - 2);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, 0), new Point(width / 4, height));
+            graf.FillRectangle(new SolidBrush(frameColor), width - width / 4, 1, width / 4 - 1, height - 2);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
+            graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, height / 2 - font.Size, parametrs.drawFormat);
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Subroutine block with indication of height and width, text, block color, text color, outline color, frame color, drawing format
+        /// (Блок подпрограммы, с указанием высоты и ширины, текста, цвета блока, цвета текста, цвета контура, цвета рамок, формата отрисовки)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="frameColor">Цвет рамки (Frame Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        /// <returns>Subroutine Block (Блок подпрограммы)</returns>
+        public Bitmap SubroutineBlock(Color color, Color fontColor, Color contrColor, Color frameColor, int width, int height, string text, StringFormat drawFormat)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.FillRectangle(new SolidBrush(frameColor), 1, 1, width / 4, height - 2);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, 0), new Point(width / 4, height));
+            graf.FillRectangle(new SolidBrush(frameColor), width - width / 4, 1, width / 4 - 1, height - 2);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
+            graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, drawFormat);
+            return Block;
+        }
+
+
+        /// <summary>
+        /// Subroutine block with indication of height and width, text, block color, text color, outline color, frame color, font, drawing format
+        /// (Блок подпрограммы, с указанием высоты и ширины, текста, цвета блока, цвета текста, цвета контура, цвета рамок, шрифта, формата отрисовки)
+        /// <param name="color">Цвет блока (Block Color)</param>
+        /// <param name="fontColor">Цвет текста (Text Color)</param>
+        /// <param name="contrColor">Цвет контура (Outline Color)</param>
+        /// <param name="frameColor">Цвет рамки (Frame Color)</param>
+        /// <param name="width">Ширина (Width)</param>
+        /// <param name="height">Высота (Height)</param>
+        /// <param name="text">Текст (Text)</param>
+        /// <param name="font">Шрифт (Font)</param>
+        /// <param name="drawFormat">Drawing format (Формат отрисовки)</param>
+        /// <returns>Subroutine Block (Блок подпрограммы)</returns>
+        public Bitmap SubroutineBlock(Color color, Color fontColor, Color contrColor, Color frameColor, int width, int height, string text, Font font, StringFormat drawFormat)
+        {
+            DrawRectangle(color, contrColor, width, height);
+            graf.FillRectangle(new SolidBrush(frameColor), 1, 1, width / 4, height - 2);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, 0), new Point(width / 4, height));
+            graf.FillRectangle(new SolidBrush(frameColor), width - width / 4, 1, width / 4 - 1, height - 2);
+            graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
+            graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, height / 2 - font.Size, drawFormat);
             return Block;
         }
         #endregion
