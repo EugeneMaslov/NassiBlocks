@@ -168,6 +168,7 @@ namespace NassiBlocks
         public Bitmap OperationBlock()
         {
             DrawRectangle(Color.White, Color.Black, 52, 28);
+            graf.Dispose();
             return Block;
         }
 
@@ -182,6 +183,7 @@ namespace NassiBlocks
         public Bitmap OperationBlock(int width, int height)
         {
             DrawRectangle(Color.White, Color.Black, width, height);
+            graf.Dispose();
             return Block;
         }
 
@@ -198,6 +200,7 @@ namespace NassiBlocks
         {
             DrawRectangle(Color.White, Color.Black, width, height);
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -215,6 +218,7 @@ namespace NassiBlocks
         {
             DrawRectangle(color, Color.Black, width, height);
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -233,6 +237,7 @@ namespace NassiBlocks
         {
             DrawRectangle(color, Color.Black, width, height);
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -252,6 +257,7 @@ namespace NassiBlocks
         {
             DrawRectangle(color, contrColor, width, height);
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -272,6 +278,7 @@ namespace NassiBlocks
         {
             DrawRectangle(color, contrColor, width, height);
             graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
         /// <summary>
@@ -291,6 +298,7 @@ namespace NassiBlocks
         {
             DrawRectangle(color, contrColor, width, height);
             graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, drawFormat);
+            graf.Dispose();
             return Block;
         }
         #endregion
@@ -305,8 +313,9 @@ namespace NassiBlocks
             DrawRectangle(Color.White, Color.Black, 52, 28);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, 0), new Point(26, 14));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(26, 14), new Point(52, 0));
-            graf.DrawLine(new Pen(Color.Black, 1), new Point(0, 26), new Point(52, 14));
-            graf.DrawLine(new Pen(Color.Black, 1), new Point(52, 14), new Point(26, 14));
+            graf.DrawLine(new Pen(Color.Black, 1), new Point(0, 14), new Point(52, 14));
+            graf.DrawLine(new Pen(Color.Black, 1), new Point(26, 28), new Point(26, 14));
+            graf.Dispose();
             return Block;
         }
 
@@ -325,6 +334,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 2, height / 2), new Point(width, 0));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 2, height), new Point(width / 2, height / 2));
+            graf.Dispose();
             return Block;
         }
 
@@ -345,6 +355,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 2, height), new Point(width / 2, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / 2, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -366,6 +377,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 2, height), new Point(width / 2, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / 2, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -388,6 +400,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 2, height), new Point(width / 2, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -411,6 +424,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 2, height), new Point(width / 2, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -435,6 +449,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 2, height), new Point(width / 2, (height - addHeight) / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -464,6 +479,7 @@ namespace NassiBlocks
                 graf.DrawString("Да", parametrs.font, new SolidBrush(fontColor), 0 + 2 * parametrs.font.Size, ((height - addHeight) / 6), parametrs.drawFormat);
                 graf.DrawString("Нет", parametrs.font, new SolidBrush(fontColor), width - 2 * parametrs.font.Size, ((height - addHeight) / 6), parametrs.drawFormat);
             }
+            graf.Dispose();
             return Block;
         }
 
@@ -494,6 +510,7 @@ namespace NassiBlocks
                 graf.DrawString("Да", parametrs.font, new SolidBrush(fontColor), 0 + 2 * parametrs.font.Size, ((height - addHeight) / 6), drawFormat);
                 graf.DrawString("Нет", parametrs.font, new SolidBrush(fontColor), width - 2 * parametrs.font.Size, ((height - addHeight) / 6), drawFormat);
             }
+            graf.Dispose();
             return Block;
         }
 
@@ -524,6 +541,7 @@ namespace NassiBlocks
                 graf.DrawString("Да", font, new SolidBrush(fontColor), 0 + 2 * font.Size, ((height - addHeight) / 6), parametrs.drawFormat);
                 graf.DrawString("Нет", font, new SolidBrush(fontColor), width - 2 * font.Size, ((height - addHeight) / 6), parametrs.drawFormat);
             }
+            graf.Dispose();
             return Block;
         }
 
@@ -555,6 +573,7 @@ namespace NassiBlocks
                 graf.DrawString("Да", font, new SolidBrush(fontColor), 0 + 2 * font.Size, ((height - addHeight) / 6), drawFormat);
                 graf.DrawString("Нет", font, new SolidBrush(fontColor), width - 2 * font.Size, ((height - addHeight) / 6), drawFormat);
             }
+            graf.Dispose();
             return Block;
         }
         #endregion
@@ -570,6 +589,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(39, 14), new Point(52, 0));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, 14), new Point(52, 14));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(39, 14), new Point(39, 28));
+            graf.Dispose();
             return Block;
         }
 
@@ -587,6 +607,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, height / 2), new Point(width, 0));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, height / 2), new Point(width - width / 4, height));
+            graf.Dispose();
             return Block;
         }
 
@@ -606,6 +627,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, height / 2), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width - width / 3, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -626,6 +648,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, height / 2), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width - width / 3, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -647,6 +670,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, height / 2), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width - width / 3, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -669,6 +693,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(0, height / 2), new Point(width, height / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, height / 2), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width - width / 3, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -692,6 +717,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width - width / 3, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -716,6 +742,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width - width / 4, height));
             graf.DrawString(text, font, new SolidBrush(fontColor), width - width / 3, 0, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -740,6 +767,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width - width / 3, 0, drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -765,6 +793,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(0, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, (height - addHeight) / 2), new Point(width - width / 4, height));
             graf.DrawString(text, font, new SolidBrush(fontColor), width - width / 3, 0, drawFormat);
+            graf.Dispose();
             return Block;
         }
         #endregion
@@ -778,6 +807,7 @@ namespace NassiBlocks
             DrawRectangle(Color.White, Color.Black, 52, 28);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(13, 28), new Point(13, 14));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(13, 14), new Point(52, 14));
+            graf.Dispose();
             return Block;
         }
 
@@ -793,6 +823,7 @@ namespace NassiBlocks
             DrawRectangle(Color.White, Color.Black, width, height);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
+            graf.Dispose();
             return Block;
         }
 
@@ -810,6 +841,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / (width / 2), height / (int)(height / 1.75));
+            graf.Dispose();
             return Block;
         }
 
@@ -828,6 +860,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / (width / 2), height / (int)(height / 1.75));
+            graf.Dispose();
             return Block;
         }
 
@@ -847,6 +880,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / (width / 2), height / (int)(height / 1.75));
+            graf.Dispose();
             return Block;
         }
 
@@ -867,6 +901,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, height), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / (width / 2), height / (int)(height / 1.75));
+            graf.Dispose();
             return Block;
         }
 
@@ -888,6 +923,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, height), new Point(width / 4, (height - addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / (width / 2), height / (int)(height / 1.75));
+            graf.Dispose();
             return Block;
         }
 
@@ -910,6 +946,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, height), new Point(width / 4, (height - addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, (height - addHeight) / 2), new Point(width, (height - addHeight) / 2));
             graf.DrawString(text, font, new SolidBrush(fontColor), width / (width / 2), height / (int)(height / 1.75));
+            graf.Dispose();
             return Block;
         }
         #endregion
@@ -923,6 +960,7 @@ namespace NassiBlocks
             DrawRectangle(Color.White, Color.Black, 52, 28);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(13, 0), new Point(13, 14));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(13, 14), new Point(52, 14));
+            graf.Dispose();
             return Block;
         }
 
@@ -938,6 +976,7 @@ namespace NassiBlocks
             DrawRectangle(Color.White, Color.Black, width, height);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, 0), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
+            graf.Dispose();
             return Block;
         }
 
@@ -955,6 +994,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, 0), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / (width / 2), height - parametrs.font.Size * 2);
+            graf.Dispose();
             return Block;
         }
 
@@ -973,6 +1013,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, 0), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / (width / 2), height - parametrs.font.Size * 2);
+            graf.Dispose();
             return Block;
         }
 
@@ -992,6 +1033,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, 0), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, height / 2), new Point(width, height / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / (width / 2), height - parametrs.font.Size * 2);
+            graf.Dispose();
             return Block;
         }
 
@@ -1012,6 +1054,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, 0), new Point(width / 4, height / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, height / 2), new Point(width, height  / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / (width / 2), height - parametrs.font.Size * 2);
+            graf.Dispose();
             return Block;
         }
 
@@ -1033,6 +1076,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, 0), new Point(width / 4, (height + addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, (height + addHeight) / 2), new Point(width, (height + addHeight) / 2));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / (width / 2), height - parametrs.font.Size * 2);
+            graf.Dispose();
             return Block;
         }
 
@@ -1055,6 +1099,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, 0), new Point(width / 4, (height + addHeight) / 2));
             graf.DrawLine(new Pen(contrColor, 1), new Point(width / 4, (height + addHeight) / 2), new Point(width, (height + addHeight) / 2));
             graf.DrawString(text, font, new SolidBrush(fontColor), width / (width / 2), height - font.Size * 2);
+            graf.Dispose();
             return Block;
         }
         #endregion
@@ -1072,6 +1117,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(13, 0), new Point(13, 28));
             graf.FillRectangle(new SolidBrush(Color.Gray), 39, 1, 12, 26);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(39, 0), new Point(39, 28));
+            graf.Dispose();
             return Block;
         }
 
@@ -1089,6 +1135,7 @@ namespace NassiBlocks
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width / 4, 0), new Point(width / 4, height));
             graf.FillRectangle(new SolidBrush(Color.Gray), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
+            graf.Dispose();
             return Block;
         }
 
@@ -1108,6 +1155,7 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(Color.Gray), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -1128,6 +1176,7 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(Color.Gray), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(Color.Black), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -1149,6 +1198,7 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(Color.Gray), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(Color.Black, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -1171,6 +1221,7 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(Color.Gray), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -1194,6 +1245,7 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(frameColor), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -1218,6 +1270,7 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(frameColor), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, height / 2 - font.Size, parametrs.drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -1242,6 +1295,7 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(frameColor), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, parametrs.font, new SolidBrush(fontColor), width / 2, height / 2 - parametrs.font.Size, drawFormat);
+            graf.Dispose();
             return Block;
         }
 
@@ -1267,6 +1321,7 @@ namespace NassiBlocks
             graf.FillRectangle(new SolidBrush(frameColor), width - width / 4, 1, width / 4 - 1, height - 2);
             graf.DrawLine(new Pen(contrColor, 1), new Point(width - width / 4, 0), new Point(width - width / 4, height));
             graf.DrawString(text, font, new SolidBrush(fontColor), width / 2, height / 2 - font.Size, drawFormat);
+            graf.Dispose();
             return Block;
         }
         #endregion
